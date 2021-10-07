@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: prodconfig
+nameSuffix: -prod
+bases:
+  - ../../base
+replicas:
+  - name: configtest
+    count: 2
+commonLabels:
+  app.kubernetes.io/instance: configtest-prod
+patchesStrategicMerge:
+  - langmap.yaml.patch
+configMapGenerator:
+  - name: langmap
+    files:
+      - langs.json
+

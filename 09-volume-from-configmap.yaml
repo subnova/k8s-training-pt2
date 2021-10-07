@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configtest
+spec:
+  selector:
+    matchLabels:
+      app: configtest
+  template:
+    metadata:
+      labels:
+        app: configtest
+    spec:
+      containers:
+      - name: configtest
+        args:
+          - "-langs=/conf/langs.json"
+        image: configtest:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 8090
+        volumeMounts:
+          - mountPath: /conf
+            name: langmap
+      volumes:
+        - name: langmap
+          configMap:
+            name: langmap

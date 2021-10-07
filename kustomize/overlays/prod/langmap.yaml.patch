@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configtest
+spec:
+  template:
+    spec:
+      containers:
+      - name: configtest
+        args:
+          - "-langs=/conf/langs.json"
+        volumeMounts:
+          - mountPath: /conf
+            name: langmap
+      volumes:
+        - name: langmap
+          configMap:
+            name: langmap
+      

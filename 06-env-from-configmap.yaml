@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configtest
+spec:
+  selector:
+    matchLabels:
+      app: configtest
+  template:
+    metadata:
+      labels:
+        app: configtest
+    spec:
+      containers:
+      - name: configtest
+        envFrom:
+          - configMapRef:
+              name: configtest
+        image: configtest:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 8090

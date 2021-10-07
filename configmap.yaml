@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configtest
+data:
+  GREETING_NAME: UX
+  greetee: Designers
