@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta21
+kind: Config
+metadata:
+  name: mats_dashboard
+profiles:
+  - name: local
+    activation:
+      - kubeContext: minikube
+    build:
+      artifacts:
+        - image: configtest
+          context: app
+    deploy:
+      kustomize:
+        paths:
+          - kustomize/base
+  - name: prod
+    build:
+      artifacts:
+        - image: configtest
+          context: app
+    deploy:
+      kustomize:
+        paths:
+          - kustomize/overlays/prod

@@ -1,0 +1,13 @@
+diff --git a/app/main.go b/app/main.go
+index 5763453..83a7644 100644
+--- a/app/main.go
++++ b/app/main.go
+@@ -26,7 +26,7 @@ func hello(w http.ResponseWriter, req *http.Request) {
+ func main() {
+ 	defaultName := os.Getenv("GREETING_NAME")
+ 	if defaultName == "" {
+-		defaultName = "world"
++		defaultName = "world!"
+ 	}
+ 	greetingName = flag.String("name", defaultName, "name to greet")
+ 	langFile = flag.String("langs", "langs.json", "file containing language templates")
