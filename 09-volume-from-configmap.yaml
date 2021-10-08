@@ -25,8 +25,8 @@ spec:
         - containerPort: 8090
         volumeMounts:
           - mountPath: /conf
-            name: langmap
+            name: langmap-volume
       volumes:
-        - name: langmap
+        - name: langmap-volume
           configMap:
             name: langmap

@@ -143,6 +143,7 @@ Hello Illuminatus Grand Master 👁⃤
 ```sh
 $ cd configtest
 $ helm upgrade --install --create-namespace --namespace helmdemo configtest .
+$ kubens helmdemo
 $ helm list
 NAME            NAMESPACE       REVISION        UPDATED                                STATUS          CHART                   APP VERSION
 configtest      helmdemo        1               2021-10-08 10:03:38.2957355 +0100 BST  deployed        configtest-0.1.1        1.0.0   
